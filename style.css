@@ -6,6 +6,11 @@
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: rgb(60, 60, 60);
 }
+img{
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
                    /* ----  NAVBAR ------ */
 .navbar{
   display: flex;
@@ -35,40 +40,44 @@
 
 /* ------------- SLIDING IMAGES -------- */
 .slider{
-  width: 100%;
-  max-width: 1200px;
-  height: 640px;
+  width: min(100%, 1200px); /*learn*/
+  height: 100%;
   overflow: hidden;
-  margin: auto;
+  margin: 16px auto;
   position: relative;
   border-radius: 15px;
 }
 
 .slide{
   display: flex;
-  width: calc(3*100%);
+  width: calc(3*100);
   animation: 10s slideleft infinite;
 }
 
 .slide img{
   width: 100%;
-  height: 640px;
+  height: 100%;
   object-fit: cover;
 }
 
+
+ /* --------JUMBOTRONN----- */
 .jumbotron{
   display: flex;
-  margin: 30px 0;
-  padding: 5px;
+  gap: 16px;
+  margin: 30px auto;
+  padding: 16px;
   width: 100%;
+  max-width: 100%;
+  align-items: center;
   background-color: silver;
 }
 .l-jumbo{
-  width:70%;
+  flex: 1 1 0;
   padding: 10px;
 }
 .r-jumbo{
-  width: 30%;
+  flex: 0 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,10 +103,32 @@
 
 .welcome{
   padding: 30px 0;
-  width: 600px;
+  width: min(90%, 60ch); /*learn*/
   margin: auto;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center
+}
+
+
+.threecol{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-around;
+  width: min(100%, 1200px); /*learn*/
+  margin: 16px auto 32px;
+  padding-inline: 16px; /*learn*/
+
+}
+.threecol div{
+  flex: 1 1 260px; /* flex-grow    flex-shrink    260px*/
+  min-height: 220px;
+  background-color: aqua;
+  border: solid;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -109,28 +140,15 @@
   background-color: black;
 }
 
+
+
+
 @keyframes slideleft{
   0%{ transform: translateX(0%);}
   33.333%{ transform: translateX(-100%);}
   66.666%{ transform: translateX(-200%);}
   100%{ transform: translateX(0%);}
 }
-
-.threecol{
-  display: flex;
-  justify-content: space-around;
-
-
-}
-.threecol div{
-  width: 300px;
-  height: 300px;
-  background-color: aqua;
-  border: solid;
-  margin: 30px 0;
-}
-
-
 
 
 
@@ -141,13 +159,19 @@
 
 /*---Media Queries --*/
 @media (max-width: 992px) {
-
+  .navbar{height: auto; padding-block: 8px;}
   }
 @media (max-width: 768px) {
-
+  .jumbotron{flex-direction: column; text-align: center;}
+  .r-jumbo{width: 100%;}
+  .welcome{text-align: center;}
+  .threecol > div { min-height: 200px;}
 }
 @media (max-width: 576px) {
-
+  .navbar-nav{justify-content: center;}
+  .logo{margin-right: 8px;}
+  .threecol{padding: 0 12px;}
+  .threecol > div { flex-basis: 100%; }
 }
 
 
